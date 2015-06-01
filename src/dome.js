@@ -95,7 +95,13 @@ window.dome = (function () {
         }
     };
 
-    Dome.prototype.append = function (els) {
+    Dome.prototype.append = function (nodes) {
+        var els;
+        if (nodes.length) {
+            els = new Dome(nodes);
+        } else {
+            els = new Dome([nodes]);
+        }
         return this.forEach(function (parEl, i) {
             els.forEach(function (childEl) {
                 parEl.appendChild( (i > 0) ? childEl.cloneNode(true) : childEl);
@@ -103,7 +109,13 @@ window.dome = (function () {
         });
     };
 
-    Dome.prototype.prepend = function (els) {
+    Dome.prototype.prepend = function (nodes) {
+        var els;
+        if (nodes.length) {
+            els = new Dome(nodes);
+        } else {
+            els = new Dome([nodes]);
+        }
         return this.forEach(function (parEl, i) {
             for (var j = els.length -1; j > -1; j--) {
                 parEl.insertBefore((i > 0) ? els[j].cloneNode(true) : els[j], parEl.firstChild);

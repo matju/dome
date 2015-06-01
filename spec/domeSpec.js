@@ -221,7 +221,7 @@ describe("dome", function () {
             var o = dome.get("#one"),
                 p = dome.create("p", {text: "p" });
             o.append(p);
-            p.remove()
+            p.remove();
             expect(o[0].children.length).toBe(0);
         });
     });
